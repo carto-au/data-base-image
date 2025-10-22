@@ -1,4 +1,4 @@
-FROM linuxcontainers/debian-slim:12.5
+FROM debian:trixie-slim
 RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt-get update
 # Misc system tools needed for image build
