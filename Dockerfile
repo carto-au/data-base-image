@@ -14,7 +14,7 @@ RUN apt-get install -y wget gpg unzip curl git
 RUN wget -nv https://github.com/systemed/tilemaker/releases/download/v3.0.0/tilemaker-ubuntu-22.04.zip -O tilemaker.zip \
   && unzip -p tilemaker.zip build/tilemaker > /usr/bin/tilemaker \
   && chmod +x /usr/bin/tilemaker \
-  && rm tilemaker
+  && rm tilemaker.zip
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
