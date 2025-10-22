@@ -2,7 +2,7 @@ FROM debian:trixie-slim
 RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt-get update
 # Misc system tools needed for image build
-RUN apt-get install -y wget gpg unzip
+RUN apt-get install -y wget gpg unzip curl
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
@@ -32,6 +32,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && rm awscliv2.zip \
   && rm -rf ./aws
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
-RUN apt-get install -y tree time parallel curl
+RUN apt-get install -y tree time parallel
 
 ENTRYPOINT [ "/bin/bash" ]
