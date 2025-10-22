@@ -1,8 +1,8 @@
 FROM linuxcontainers/debian-slim:12.5
 RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt-get update
-# Misc system tools
-RUN apt-get install -y wget gpg unzip tree
+# Misc system tools needed for image build
+RUN apt-get install -y wget gpg unzip
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
@@ -25,5 +25,7 @@ RUN mamba install -c conda-forge dvc \
 RUN mamba install -c conda-forge libgdal-arrow-parquet
 ##### INSTALL NODE & NPM #####
 RUN apt-get install -y nodejs npm
+##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
+RUN apt-get install -y tree time
 
 ENTRYPOINT [ "/bin/bash" ]
