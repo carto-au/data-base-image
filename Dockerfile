@@ -26,6 +26,6 @@ RUN mamba install -c conda-forge libgdal-arrow-parquet
 ##### INSTALL NODE & NPM #####
 RUN apt-get install -y nodejs npm
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
-RUN apt-get install -y tree time parallel
+RUN apt-get install -y tree time parallel curl
 
 ENTRYPOINT [ "/bin/bash" ]
