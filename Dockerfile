@@ -2,7 +2,15 @@ FROM debian:trixie-slim
 RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt-get update
 # Misc system tools needed for image build
-RUN apt-get install -y wget gpg unzip curl
+RUN apt-get install -y wget gpg unzip curl git
+##### INSTALL TILEMAKER #####
+RUN apt-get install -y zlib1g-dev libboost-iostreams-dev build-essential libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev lua5.1 liblua5.1-0-dev libshp-dev libsqlite3-dev rapidjson-dev \
+  && git clone --depth 1 --branch v3.0.0 https://github.com/systemed/tilemaker.git \
+  && cd tilemaker \
+  && make \
+  && make install \
+  && cd .. \
+  && rm -rf tilemaker
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
