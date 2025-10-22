@@ -2,7 +2,7 @@ FROM linuxcontainers/debian-slim:12.5
 RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' > /etc/apt/sources.list.d/backports.list
 RUN apt-get update
 # Misc system tools
-RUN apt-get install -y wget gpg unzip
+RUN apt-get install -y wget gpg unzip tree
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
