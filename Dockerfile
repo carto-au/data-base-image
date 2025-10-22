@@ -28,6 +28,8 @@ RUN wget -nv https://github.com/protomaps/go-pmtiles/releases/download/v1.28.0/g
 ##### INSTALL CONDA & MAMBA #####
 ENV PATH="/root/conda/bin:${PATH}"
 ARG PATH="/root/conda/bin:${PATH}"
+ENV PROJ_LIB="/root/conda/share/proj"
+ARG PROJ_LIB="/root/conda/share/proj"
 RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh" \
   && bash Miniforge3.sh -b -p "/root/conda"
 ##### INSTALL DVC #####
