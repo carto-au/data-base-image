@@ -25,6 +25,12 @@ RUN mamba install -c conda-forge dvc \
 RUN mamba install -c conda-forge libgdal-arrow-parquet
 ##### INSTALL NODE & NPM #####
 RUN apt-get install -y nodejs npm
+##### INSTALL AWS CLI #####
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+  && unzip awscliv2.zip \
+  && ./aws/install \
+  && rm awscliv2.zip \
+  && rm -rf ./aws
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
 RUN apt-get install -y tree time parallel curl
 
