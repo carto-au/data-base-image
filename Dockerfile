@@ -4,13 +4,17 @@ RUN apt-get update
 # Misc system tools needed for image build
 RUN apt-get install -y wget gpg unzip curl git
 ##### INSTALL TILEMAKER #####
-RUN apt-get install -y zlib1g-dev libboost-iostreams-dev build-essential libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev lua5.1 liblua5.1-0-dev libshp-dev libsqlite3-dev rapidjson-dev \
-  && git clone --depth 1 --branch v3.0.0 https://github.com/systemed/tilemaker.git \
-  && cd tilemaker \
-  && make \
-  && make install \
-  && cd .. \
-  && rm -rf tilemaker
+# RUN apt-get install -y zlib1g-dev libboost-iostreams-dev build-essential libboost-dev libboost-filesystem-dev libboost-program-options-dev libboost-system-dev lua5.1 liblua5.1-0-dev libshp-dev libsqlite3-dev rapidjson-dev \
+#   && git clone --depth 1 --branch v3.0.0 https://github.com/systemed/tilemaker.git \
+#   && cd tilemaker \
+#   && make \
+#   && make install \
+#   && cd .. \
+#   && rm -rf tilemaker
+RUN wget -nv https://github.com/systemed/tilemaker/releases/download/v3.0.0/tilemaker-ubuntu-22.04.zip -O tilemaker.zip \
+  && unzip -p tilemaker.zip build/tilemaker > /usr/bin/tilemaker \
+  && chmod +x /usr/bin/tilemaker \
+  && rm tilemaker
 ##### INSTALL GDAL #####
 RUN apt-get install -y gdal-bin
 RUN ogr2ogr --version
