@@ -46,6 +46,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && rm awscliv2.zip \
   && rm -rf ./aws
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
-RUN apt-get install -y tree time parallel gh
+RUN apt-get install -y tree time parallel gh jq
 
 ENTRYPOINT [ "/bin/bash" ]
