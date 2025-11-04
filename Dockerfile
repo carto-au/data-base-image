@@ -46,9 +46,11 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && rm awscliv2.zip \
   && rm -rf ./aws
 ##### INSTALL DUCKDB #####
-ENV PATH="/root/.duckdb/cli/latest:${PATH}"
-ARG PATH="/root/.duckdb/cli/latest:${PATH}"
-RUN curl https://install.duckdb.org | sh
+RUN wget -nv https://install.duckdb.org/v1.4.1/duckdb_cli-linux-amd64.zip -O duckdb.zip \
+  && echo "3e29952507ebd202e8d0e2678df4490689bfc9c86534e240b541791b969df0e1  duckdb.zip" | shasum -c \
+  && unzip -p duckdb.zip duckdb > /usr/bin/duckdb \
+  && chmod +x /usr/bin/duckdb \
+  && rm duckdb.zip
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
 RUN apt-get install -y tree time parallel gh jq
 
