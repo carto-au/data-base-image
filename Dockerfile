@@ -45,6 +45,10 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
   && ./aws/install \
   && rm awscliv2.zip \
   && rm -rf ./aws
+##### INSTALL DUCKDB #####
+ENV PATH="/root/.duckdb/cli/latest:${PATH}"
+ARG PATH="/root/.duckdb/cli/latest:${PATH}"
+RUN curl https://install.duckdb.org | sh
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
 RUN apt-get install -y tree time parallel gh jq
 
