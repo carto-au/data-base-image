@@ -51,6 +51,11 @@ RUN wget -nv https://install.duckdb.org/v1.4.1/duckdb_cli-linux-amd64.zip -O duc
   && unzip -p duckdb.zip duckdb > /usr/bin/duckdb \
   && chmod +x /usr/bin/duckdb \
   && rm duckdb.zip
+##### INSTALL TILEPACK #####
+RUN wget -nv https://github.com/tilezen/go-tilepacks/releases/download/v1.0.0-pre1/tilepack_1.0.0-pre1_linux_amd64.tar.gz -O tilepack.tar.gz \
+  && tar -xzf tilepack.tar.gz tilepack \
+  && mv tilepack /usr/local/bin/ \
+  && rm tilepack.tar.gz
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
 RUN apt-get install -y tree time parallel gh jq
 
