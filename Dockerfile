@@ -21,7 +21,7 @@ RUN ogr2ogr --version
 ##### INSTALL TIPPECANOE #####
 RUN apt-get install -y tippecanoe
 ##### INSTALL PMTILES #####
-RUN wget -nv https://github.com/protomaps/go-pmtiles/releases/download/v1.28.0/go-pmtiles_1.28.0_Linux_arm64.tar.gz -O pmtiles.tar.gz \
+RUN wget -nv https://github.com/protomaps/go-pmtiles/releases/download/v1.29.1/go-pmtiles_1.29.1_Linux_x86_64.tar.gz -O pmtiles.tar.gz \
   && tar -xzf pmtiles.tar.gz pmtiles \
   && mv pmtiles /usr/local/bin/ \
   && rm pmtiles.tar.gz
