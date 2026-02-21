@@ -56,6 +56,8 @@ RUN wget -nv https://github.com/tilezen/go-tilepacks/releases/download/v1.0.0-pr
   && tar -xzf tilepack.tar.gz tilepack \
   && mv tilepack /usr/local/bin/ \
   && rm tilepack.tar.gz
+##### INSTALL RASTERIO #####
+RUN mamba install -c conda-forge rasterio
 ##### INSTALL MISC TOOLS NEEDED BY USER SCRIPTS #####
 RUN apt-get install -y tree time parallel gh jq
 
