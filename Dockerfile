@@ -15,9 +15,6 @@ RUN wget -nv https://github.com/systemed/tilemaker/releases/download/v3.0.0/tile
   && unzip -p tilemaker.zip build/tilemaker > /usr/bin/tilemaker \
   && chmod +x /usr/bin/tilemaker \
   && rm tilemaker.zip
-##### INSTALL GDAL #####
-RUN apt-get install -y gdal-bin
-RUN ogr2ogr --version
 ##### INSTALL TIPPECANOE #####
 RUN apt-get install -y tippecanoe
 ##### INSTALL PMTILES #####
@@ -35,8 +32,10 @@ RUN wget -O Miniforge3.sh "https://github.com/conda-forge/miniforge/releases/lat
 ##### INSTALL DVC #####
 RUN mamba install -c conda-forge dvc \
   && mamba install -c conda-forge dvc-s3
-##### INSTALL GDAL PARQUET DRIVER #####
-RUN mamba install -c conda-forge libgdal-arrow-parquet
+##### INSTALL GDAL (INCLUDING PARQUET DRIVER) #####
+RUN mamba install -c conda-forge gdal \
+  && mamba install -c conda-forge libgdal-arrow-parquet
+RUN gdal --version && gdal --formats
 ##### INSTALL NODE & NPM #####
 RUN apt-get install -y nodejs npm
 ##### INSTALL AWS CLI #####
